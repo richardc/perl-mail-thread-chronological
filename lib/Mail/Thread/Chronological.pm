@@ -1,5 +1,5 @@
 use strict;
-package Mail::Thread::Lurker;
+package Mail::Thread::Chronological;
 use Mail::Thread ();
 use Date::Parse qw( str2time );
 use List::Util qw( max );
@@ -9,15 +9,15 @@ use constant debug => 0;
 
 =head1 NAME
 
-Mail::Thread::Lurker - rearrange Mail::Thread::Containers into a Lurker-like structure
+Mail::Thread::Chronological - rearrange Mail::Thread::Containers into a Chronological structure
 
 =head1 SYNOPSIS
 
  use Mail::Thread;
- use Mail::Thread::Lurker;
+ use Mail::Thread::Chronological;
 
  my $threader = Mail::Thread->new( @messages );
- my $lurker = Mail::Thread::Lurker->new;
+ my $lurker = Mail::Thread::Chronological->new;
 
  $threader->thread;
 
@@ -31,7 +31,7 @@ Mail::Thread::Lurker - rearrange Mail::Thread::Containers into a Lurker-like str
 
 =head1 DESCRIPTION
 
-Given a Mail::Thread::Container, Mail::Thread::Lurker transforms the
+Given a Mail::Thread::Container, Mail::Thread::Chronological transforms the
 tree structure into a 2-dimensional array representing the history of
 a given thread in time.
 

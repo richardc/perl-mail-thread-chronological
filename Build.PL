@@ -2,7 +2,7 @@ use strict;
 use Module::Build;
 
 Module::Build
-  ->new( module_name => "Mail::Thread::Lurker",
+  ->new( module_name => "Mail::Thread::Chronological",
          license     => 'perl',
          requires    => {
              'Mail::Thread' => 0,
