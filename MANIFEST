@@ -1,5 +1,6 @@
 MANIFEST
-lib/Mail/Thread/Lurker.pm
+Changes
+lib/Mail/Thread/Chronological.pm
 t/lurker.t
 Build.PL
 Makefile.PL
