@@ -1,0 +1,7 @@
+MANIFEST
+lib/Mail/Thread/Lurker.pm
+t/lurker.t
+Build.PL
+Makefile.PL
+META.yml
+SIGNATURE
