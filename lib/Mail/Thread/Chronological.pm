@@ -3,7 +3,8 @@ package Mail::Thread::Chronological;
 use Mail::Thread ();
 use Date::Parse qw( str2time );
 use List::Util qw( max );
-our $VERSION = '1.21';
+use vars qw/$VERSION/;
+$VERSION = '1.22';
 
 use constant debug => 0;
 
@@ -169,6 +170,7 @@ sub arrange {
             # have a clearly identifiable parent
             my $col = (max map { scalar @$_ } @cells );
             $cells[$row][$col] = $c;
+            next;
         }
         my $col;
         my ($parent_row, $parent_col) = @{ _cell( \@cells, $first_parent ) };
@@ -218,7 +220,9 @@ sub arrange {
                 for my $r (@cells[0 .. $row - 1]) {
                     next if @$r < $col;
                     my $here = $r->[$col] || '';
-                    splice(@$r, $col, 0, $here eq '+' ? '-' : undef);
+                    # what to splice in
+                    my $splice = $here =~/[+\-]/ ? '-' : ' ';
+                    splice(@$r, $col, 0, $splice);
                 }
                 $col = $parent_col + 1;
             }
